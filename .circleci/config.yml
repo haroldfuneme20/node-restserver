@@ -15,10 +15,10 @@ jobs:
       - checkout
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@5'
+          command: 'npm i'
       - run:
-          name: test
-          command: './specs/routes.spec.js sudo npm test'
+          name: run test
+          command: './specs/routes.spec.js sudo npm run test'
       - run:
           name: voverage
           command: npm coverage
