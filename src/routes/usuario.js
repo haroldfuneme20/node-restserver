@@ -122,33 +122,37 @@ app.put('/usuario/:id', function(req, res) {
 
 });
 
+app.delete('/fisico/usuario/:id', function(req, res) {
+    //  borrado fisicamente
+    Usuario.findByIdAndRemove(id, (err, userDelete) => {
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            })
+        }
+        if (userDelete === null) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    message: 'Usuario no encontrado'
+                }
+            })
+        }
+
+        res.json({
+            ok: true,
+            message: `El usuario ${userDelete} fue borrado exitosamente`,
+            usuario_borrado: userDelete
+        })
+    });
+
+
+})
+
 app.delete('/usuario/:id', function(req, res) {
 
     let id = req.params.id;
-
-    // borrado fisicamente
-    // Usuario.findByIdAndRemove(id, (err, userDelete) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err
-    //         })
-    //     }
-    //     if (userDelete === null) {
-    //         return res.status(400).json({
-    //             ok: false,
-    //             err: {
-    //                 message: 'Usuario no encontrado'
-    //             }
-    //         })
-    //     }
-
-    //     res.json({
-    //         ok: true,
-    //         message: `El usuario ${userDelete} fue borrado exitosamente`,
-    //         usuario_borrado: userDelete
-    //     })
-    // });
 
     // Borrado cambiando estado
     let cambioEstado = {

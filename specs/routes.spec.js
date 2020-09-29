@@ -5,9 +5,7 @@ const expect = require('chai').expect;
 
 console.log('ok');
 
-let n = 15;
-let correoAct = `jahs${n}@gmail.com`;
-let nomAct = `harold${n}`
+let n = 20;
 chai.use(chaiHttp)
 const url = 'https://hfuneme-node-restserver.herokuapp.com';
 const id = '5f69160558811327039898ad';
@@ -25,6 +23,7 @@ describe('Prueba de CRUD: ', () => {
                 expect(res).to.have.status(200)
                 done();
             });
+        c
     });
 
     it('POST 404 No existe recurso: ', (done) => {
