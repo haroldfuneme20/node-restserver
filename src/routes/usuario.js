@@ -1,12 +1,12 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const _ = require('underscore');
+const redis = require('redis')
+const axios = require('axios') //sirve para hacer peticiones http
 
-const { replaceOne } = require('../models/usuario');
+
 const Usuario = require('../models/usuario');
-const usuario = require('../models/usuario');
 const app = express()
-
 
 app.get('/usuario', function(req, res) {
 
@@ -89,26 +89,36 @@ app.post('/usuario', function(req, res) {
 // actualizacion de registro
 app.put('/usuario/:id', function(req, res) {
     let id = req.params.id;
-    let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
+    let body = req.body;
 
-
-
-    // Usuario.findById( id, (err, userBD) =>{
-    //     userBD.save();
-    // });
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userBD) => {
-
         if (err) {
             return res.status(400).json({
                 ok: false,
-                err
+                err,
+                msg: 'asdf'
             })
         }
         res.json({
-            id,
+            ok: true,
             user: userBD
         })
+        console.log(userBD);
     });
+    // Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userBD) => {
+
+    //     if (err) {
+    //         return res.status(400).json({
+    //             ok: false,
+    //             err,
+    //             msg: 'asdf'
+    //         })
+    //     }
+    //     res.json({
+    //         ok: true,
+    //         user: userBD
+    //     })
+    // });
 
 });
 
@@ -168,6 +178,8 @@ app.delete('/usuario/:id', function(req, res) {
     });
 
 })
+
+
 
 
 module.exports = app;
