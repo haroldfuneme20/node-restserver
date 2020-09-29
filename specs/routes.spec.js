@@ -6,11 +6,8 @@ const expect = require('chai').expect;
 console.log('ok');
 
 
-<<<<<<< HEAD
-let n = 1;
-=======
-let n = 40;
->>>>>>> ce100c2972c0fa3d6b561780fa476beda9bdbdad
+
+let n = Math.random();
 chai.use(chaiHttp)
 const url = 'https://hfuneme-node-restserver.herokuapp.com';
 const id = '5f738e4c23dd5b0017fb50b4';
@@ -25,11 +22,6 @@ describe('Prueba de CRUD: ', () => {
             .end(function(err, res) {
                 console.log(res.body);
                 expect(res).to.have.status(200)
-                done();
-            });
-        chai.request(url)
-            .delete(`/fisico/usuario/${res.body.usuario.id}`)
-            .end(function(err, res) {
                 done();
             });
     });
@@ -58,7 +50,7 @@ describe('Prueba de CRUD: ', () => {
     it('PUT actualizar harold', (done) => {
         chai.request(url)
             .put(`/usuario/${id}`)
-            .send({ nombre: 'pepehh', password: '12345' })
+            .send({ nombre: `HaroldEdit${id}`, password: '12345' })
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 console.log(res.body)
@@ -70,7 +62,7 @@ describe('Prueba de CRUD: ', () => {
 
     it('DELETE: borrar por id ', (done) => {
         chai.request(url)
-            .delete(`/usuario/${idDelete}`)
+            .delete(`/usuario/${id}`)
             .end(function(err, res) {
                 console.log(res.body)
                 expect(res).to.have.status(200);
