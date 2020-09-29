@@ -18,7 +18,7 @@ jobs:
           command: 'npm i'
       - run:
           name: run test
-          command: './specs/routes.spec.js sudo npm run test'
+          command: 'npm run test'
       - run:
           name: voverage
           command: npm coverage
