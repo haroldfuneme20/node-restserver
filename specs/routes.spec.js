@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 
 console.log('ok');
 
-let n = 30;
+let n = 33;
 let correoAct = `jahs${n}@gmail.com`;
 let nomAct = `harold${n}`
 chai.use(chaiHttp)
@@ -19,7 +19,7 @@ describe('Prueba de CRUD: ', () => {
     it('POST crear: ', (done) => {
         chai.request(url)
             .post('/usuario')
-            .send({ nombre: `test${n}`, email: `testhhffm${n}@gmail.com`, password: '12345' })
+            .send({ nombre: `test${n}`, email: correoAct , password: '12345' })
             .end(function(err, res) {
                 console.log(res.body);
                 expect(res).to.have.status(200)
