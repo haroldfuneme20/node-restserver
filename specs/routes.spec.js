@@ -10,7 +10,8 @@ console.log('ok');
 let n = Math.random();
 chai.use(chaiHttp)
 const url = 'https://hfuneme-node-restserver.herokuapp.com';
-const id = '5f738e4c23dd5b0017fb50b4';
+const id = '5f73988423dd5b0017fb50bf';
+const idDelete;
 
 
 describe('Prueba de CRUD: ', () => {
