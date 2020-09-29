@@ -18,7 +18,7 @@ jobs:
           command: 'sudo npm install -g npm@5'
       - run:
           name: test
-          command: './specs/routes.spec.js npm test'
+          command: './specs/routes.spec.js sudo npm test'
       - run:
           name: voverage
           command: npm coverage
