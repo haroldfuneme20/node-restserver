@@ -6,7 +6,11 @@ const expect = require('chai').expect;
 console.log('ok');
 
 
+<<<<<<< HEAD
 let n = 1;
+=======
+let n = 40;
+>>>>>>> ce100c2972c0fa3d6b561780fa476beda9bdbdad
 chai.use(chaiHttp)
 const url = 'https://hfuneme-node-restserver.herokuapp.com';
 const id = '5f738e4c23dd5b0017fb50b4';
