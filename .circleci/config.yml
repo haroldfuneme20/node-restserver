@@ -19,4 +19,6 @@ jobs:
       - run:
           name: test
           command: npm test
+      - run:
+          name: voverage
           command: npm coverage
