@@ -1,0 +1,24 @@
+version: 2.1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+
+jobs:
+  build:
+    working_directory: ~/mern-starter
+    docker:
+      - image: circleci/node:10.16.3
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'npm i'
+      - run:
+          name: run test
+          command: 'npm run test'
+      - run:
+          name: coverage
+          command: 'npm run coverage'
