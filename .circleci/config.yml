@@ -21,4 +21,4 @@ jobs:
           command: 'npm run test'
       - run:
           name: voverage
-          command: npm coverage
+          command: 'npm run coverage'
