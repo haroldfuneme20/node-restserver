@@ -21,4 +21,4 @@ jobs:
           command: 'npm run test'
       - run:
           name: voverage
-          command: 'npm run coverage'
+          command: 'nyc --reporter=text npm run test'
