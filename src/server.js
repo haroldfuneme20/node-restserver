@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 app.use(require('./routes/usuario'));
 
 //llamado de las rutas de redis
-app.use(require('./routes/redis'));
+// app.use(require('./routes/redis'));
 
 
 

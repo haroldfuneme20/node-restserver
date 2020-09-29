@@ -122,7 +122,12 @@ app.put('/usuario/:id', function(req, res) {
 
 });
 
-app.delete('/fisico/usuario/:id', function(req, res) {
+
+
+app.delete('/usuario/:id', function(req, res) {
+
+    let id = req.params.id;
+
     //  borrado fisicamente
     Usuario.findByIdAndRemove(id, (err, userDelete) => {
         if (err) {
@@ -147,39 +152,32 @@ app.delete('/fisico/usuario/:id', function(req, res) {
         })
     });
 
-
-})
-
-app.delete('/usuario/:id', function(req, res) {
-
-    let id = req.params.id;
-
     // Borrado cambiando estado
-    let cambioEstado = {
-        estado: false
-    }
-    Usuario.findByIdAndUpdate(id, cambioEstado, { new: true }, (err, userDelete) => {
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                err
-            })
-        }
-        if (userDelete === null) {
-            return res.status(400).json({
-                ok: false,
-                err: {
-                    message: 'Usuario no encontrado'
-                }
-            })
-        }
+    // let cambioEstado = {
+    //     estado: false
+    // }
+    // Usuario.findByIdAndUpdate(id, cambioEstado, { new: true }, (err, userDelete) => {
+    //     if (err) {
+    //         return res.status(400).json({
+    //             ok: false,
+    //             err
+    //         })
+    //     }
+    //     if (userDelete === null) {
+    //         return res.status(400).json({
+    //             ok: false,
+    //             err: {
+    //                 message: 'Usuario no encontrado'
+    //             }
+    //         })
+    //     }
 
-        res.json({
-            ok: true,
-            message: `El usuario ${userDelete} fue borrado por estado exitosamente`,
-            usuario_borrado: userDelete
-        })
-    });
+    //     res.json({
+    //         ok: true,
+    //         message: `El usuario ${userDelete} fue borrado por estado exitosamente`,
+    //         usuario_borrado: userDelete
+    //     })
+    // });
 
 })
 

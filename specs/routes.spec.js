@@ -6,11 +6,10 @@ const expect = require('chai').expect;
 console.log('ok');
 
 
-let n = 20;
+let n = 1;
 chai.use(chaiHttp)
 const url = 'https://hfuneme-node-restserver.herokuapp.com';
-const id = '5f69160558811327039898ad';
-const idDelete = '5f69165858811327039898ae'
+const id = '5f738e4c23dd5b0017fb50b4';
 
 
 describe('Prueba de CRUD: ', () => {
@@ -18,10 +17,15 @@ describe('Prueba de CRUD: ', () => {
     it('POST crear: ', (done) => {
         chai.request(url)
             .post('/usuario')
-            .send({ nombre: `test${n}`, email: correoAct, password: '12345' })
+            .send({ nombre: `test${n}`, email: `test${n}@gmail.com`, password: '12345' })
             .end(function(err, res) {
                 console.log(res.body);
                 expect(res).to.have.status(200)
+                done();
+            });
+        chai.request(url)
+            .delete(`/fisico/usuario/${res.body.usuario.id}`)
+            .end(function(err, res) {
                 done();
             });
     });
